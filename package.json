@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf www/ || true",
-    "build": "npm run clean && tsc && cp package.json www/package.json && mkdir www/tmp/ && cd www && zip -r Archive.zip . && cd ..",
+    "compile":"tsc",
+    "copy":"cp package.json www/package.json",
+    "zip":"cd www/ && zip -r Archive.zip .",
+    "build": "npm run clean && npm run compile &&  npm run copy && npm run zip",
     "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts"
   },
   "repository": {
