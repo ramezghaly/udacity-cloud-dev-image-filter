@@ -26,7 +26,7 @@ import {filterImageFromURL, deleteLocalFiles, isValidUrl} from './util/util';
     try{
       const filteredImagePath = await filterImageFromURL(image_url);
       res.sendFile(filteredImagePath);
-    }catch(error: any){
+    }catch(error){
       res.status(500).send(`An error has occured: ${error.message}`);
     }
 
