@@ -1,6 +1,6 @@
 import fs from "fs";
 import Jimp = require("jimp");
-
+import url = require('url');
 // filterImageFromURL
 // helper function to download, filter, and save the filtered image locally
 // returns the absolute path to the local image
@@ -35,5 +35,15 @@ export async function filterImageFromURL(inputURL: string): Promise<string> {
 export async function deleteLocalFiles(files: Array<string>) {
   for (let file of files) {
     fs.unlinkSync(file);
+  }
+}
+
+export function isValidUrl(urlToValidate: string): boolean {
+  try {
+    new url.URL(urlToValidate);
+    return true;
+  } catch (err) {
+    console.log(urlToValidate);
+    return false;
   }
 }
